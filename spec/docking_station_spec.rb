@@ -28,11 +28,19 @@ end
 it 'expected to return bike' do 
  docking_station = DockingStation.new
  bike = docking_station.release_bike
- expect(docking_station.dock(bike)).to eq bike
+
  end
 
 # it 'if you call bike on docking_station it responds to bike'
 # docking_station = DockingStation.new
 # bike = docking_station.release_bike
 it { is_expected.to respond_to(:bike) }
+
+it 'expects docking_station.bike to return bike' do
+  docking_station = DockingStation.new
+  bike = docking_station.release_bike
+  subject.dock(bike)
+  expect(subject.bike).to eq bike
+end
+
 end
