@@ -42,4 +42,13 @@ it 'raisesd an error if no bikes available' do
   expect {station.release_bike}.to raise_error(StandardError)
 end
 
+it 'raises error if you try to dock a bike when docking station is full' do
+  station = DockingStation.new
+  bike_one = Bike.new
+  bike_two = Bike.new
+  station.dock(bike_one)
+  expect { station.dock(bike_two) }.to raise_error(StandardError)
+end
+
+
 end

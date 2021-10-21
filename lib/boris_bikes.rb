@@ -12,12 +12,15 @@ class DockingStation
       Bike.new
     end
   end
-    
-    
 
   def dock(bike)
-    @bike = bike 
-    @dock << bike
+    if @dock.length >= 1
+      raise 'Docking Station full!'
+    else
+      @bike = bike 
+      @dock << bike
+    end
+  
   end
 end
 
