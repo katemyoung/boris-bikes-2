@@ -43,4 +43,9 @@ it 'expects docking_station.bike to return bike' do
   expect(subject.bike).to eq bike
 end
 
+it 'raisesd an error if no bikes available' do
+  # arrange
+  expect {subject.release_bike}.to raise_error('No bikes available')
+end
+
 end
