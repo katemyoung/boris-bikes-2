@@ -7,13 +7,16 @@ class DockingStation
   
   def release_bike
     if @dock == [] 
-      fail 'No bikes available'
+      raise 'No bikes available'
+    else
+      Bike.new
     end
-    Bike.new
   end
+    
+    
 
   def dock(bike)
-    # @bike = bike 
+    @bike = bike 
     @dock << bike
   end
 end

@@ -2,10 +2,7 @@ require './lib/boris_bikes'
 
 describe DockingStation do
 
-it 'expects a DockingStation instance to respond_to the method release_bike' do
-  docking_station = DockingStation.new
-  expect { docking_station.release_bike }.not_to raise_error
-end
+it { is_expected.to respond_to :release_bike }
 
 it 'expects Bike to respond to working?' do
   bike = Bike.new
@@ -15,19 +12,15 @@ end
 
 it 'expects the result of DockingStation.release_bike.working? to return true' do
   docking_station = DockingStation.new
-  bike = docking_station.release_bike
+  bike = Bike.new
   expect(bike.working?).to eq true
 end
 
-it 'expect docking_station.dock(bike) not to return error' do
- docking_station = DockingStation.new
- bike = docking_station.release_bike
- expect { docking_station.dock(bike) }.not_to raise_error
-end
+it { is_expected.to respond_to(:dock).with(1).argument }
 
 it 'expected to return bike' do 
  docking_station = DockingStation.new
- bike = docking_station.release_bike
+ bike = Bike.new
 
  end
 
@@ -38,14 +31,15 @@ it { is_expected.to respond_to(:bike) }
 
 it 'expects docking_station.bike to return bike' do
   docking_station = DockingStation.new
-  bike = docking_station.release_bike
+  bike = Bike.new
   subject.dock(bike)
   expect(subject.bike).to eq bike
 end
 
 it 'raisesd an error if no bikes available' do
   # arrange
-  expect {subject.release_bike}.to raise_error('No bikes available')
+  station = DockingStation.new
+  expect {station.release_bike}.to raise_error(StandardError)
 end
 
 end
