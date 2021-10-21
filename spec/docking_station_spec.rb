@@ -44,11 +44,13 @@ end
 
 it 'raises error if you try to dock a bike when docking station is full' do
   station = DockingStation.new
-  bike_one = Bike.new
-  bike_two = Bike.new
-  station.dock(bike_one)
-  expect { station.dock(bike_two) }.to raise_error(StandardError)
+  20.times { station.dock Bike.new }
+  expect { station.dock(Bike.new) }.to raise_error(StandardError)
 end
 
-
+it 'doesn\'t raise an error if not is not full' do
+  station = DockingStation.new
+  15.times { station.dock Bike.new }
+  expect { station.dock(Bike.new) }.not_to raise_error(StandardError)
+end
 end

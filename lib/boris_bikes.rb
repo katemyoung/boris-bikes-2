@@ -30,3 +30,7 @@ class Bike
   end
 end
 
+
+docking_station = DockingStation.new
+    20.times { docking_station.dock Bike.new }
+   p @dock
