@@ -1,8 +1,7 @@
-require './lib/boris_bikes'
+require './lib/bike.rb'
 
 describe Bike do
   it 'expects Bike instance to respond to the method working?' do
-    bike = Bike.new
-    expect { bike.working? }.not_to raise_error
+    it { is_expected.to respond_to :working? }
   end
 end

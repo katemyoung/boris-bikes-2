@@ -1,4 +1,4 @@
-require './lib/boris_bikes'
+require './lib/docking_station.rb'
 
 describe DockingStation do
 
@@ -41,6 +41,10 @@ it 'expects docking_station.bike to return bike' do
   bike = docking_station.release_bike
   subject.dock(bike)
   expect(subject.bike).to eq bike
+end
+
+it "it does not take out bikes when there is no bikes" do
+  expect { subject.release_bike }.to raise_error "No bikes availble"
 end
 
 end
