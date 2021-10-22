@@ -2,15 +2,32 @@ require 'bike'
 
 class DockingStation
   attr_reader :bike  
-
+  
+  def initialize
+    @dock = []
+  end
+  
   def release_bike
-    Bike.new
+    if @dock == [] 
+      raise 'No bikes available'
+    else
+      Bike.new
+    end
   end
 
   def dock(bike)
-    @bike = bike 
+    if @dock.length >= 1
+      raise 'Docking Station full!'
+    else
+      @bike = bike 
+      @dock << bike
+    end
+  
   end
-
 end
 
 
+
+docking_station = DockingStation.new
+    20.times { docking_station.dock Bike.new }
+   p @dock
